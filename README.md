@@ -34,7 +34,7 @@ Source: https://bertnotbob.medium.com/getting-mcrypt-extension-working-on-php-7-
 ```
 ;mcrypt
 
-extension="/usr/local/lib/php/pecl/20180730/mcrypt.so
+extension="/usr/local/lib/php/pecl/20180730/mcrypt.so"
 ```
 
 - Find out which version number of pecl matches the version of php, for ex. **20180730**
@@ -64,5 +64,5 @@ All instructions are the same as for Intel processor, only path is different.
 ```
 ;mcrypt
 
-extension="/opt/homebrew/lib/php/pecl/20180730/mcrypt.so
+extension="/opt/homebrew/lib/php/pecl/20180730/mcrypt.so"
 ```
