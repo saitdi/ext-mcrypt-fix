@@ -22,6 +22,10 @@ Source: https://bertnotbob.medium.com/getting-mcrypt-extension-working-on-php-7-
 
 `cd /usr/local/lib/php/pecl/`
 
+- Open php.ini file and find the entry:
+
+`extension_dir = "/usr/local/lib/php/pecl/<pecl_version>"`
+
 
 ### Repeat the following steps for all versions of php that you use:
 
@@ -38,3 +42,27 @@ extension="/usr/local/lib/php/pecl/20180730/mcrypt.so
 - Restart the web server
 
 `brew services restart httpd`
+
+
+
+# ext-mcrypt fix for Mac with Apple silicon
+
+All instructions are the same as for Intel processor, only path is different.
+
+- Check path with pecl versions:
+
+`cd /opt/homebrew/lib/php/pecl/`
+
+- Open php.ini file and find the entry:
+
+`extension_dir = "/opt/homebrew/lib/php/pecl/<pecl_version>"`
+
+### Repeat the following steps for all versions of php that you use:
+
+- Create an mcrypt.ini file in the conf.d directory. Write…
+
+```
+;mcrypt
+
+extension="/opt/homebrew/lib/php/pecl/20180730/mcrypt.so
+```
