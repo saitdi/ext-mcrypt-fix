@@ -34,10 +34,10 @@ Source: https://bertnotbob.medium.com/getting-mcrypt-extension-working-on-php-7-
 ```
 ;mcrypt
 
-extension="/usr/local/lib/php/pecl/20180730/mcrypt.so"
+extension="/usr/local/lib/php/pecl/20160303/mcrypt.so"
 ```
 
-- Find out which version number of pecl matches the version of php, for ex. **20180730**
+- Find out which version number of pecl matches the version of php, for ex. **20160303**
 
 - Restart the web server
 
@@ -47,22 +47,41 @@ extension="/usr/local/lib/php/pecl/20180730/mcrypt.so"
 
 # ext-mcrypt fix for Mac with Apple silicon
 
-All instructions are the same as for Intel processor, only path is different.
+If you need ext-mcrypt for php7.1 you need to install it with MacPorts.
+
+- First download and install package: https://www.macports.org/install.php
+
+- Then probably you will need to close your Terminal CLI and open again. After that run command (https://ports.macports.org/port/php71-mcrypt/details/):
+
+`sudo port install php71-mcrypt`
+
+- Find the path to your in-use php.ini file and conf.d folder
+
+`php --ini`
 
 - Check path with pecl versions:
 
-`cd /opt/homebrew/lib/php/pecl/`
+`cd /usr/local/lib/php/pecl/`
 
 - Open php.ini file and find the entry:
 
-`extension_dir = "/opt/homebrew/lib/php/pecl/<pecl_version>"`
+`extension_dir = "/usr/local/lib/php/pecl/<pecl_version>"`
 
-### Repeat the following steps for all versions of php that you use:
+- Now you need to copy mcrypt.so to the PECL. (20160303 - pecl version)
+
+`cp /opt/local/lib/php71/extensions/no-debug-non-zts-20160303/mcrypt.so /opt/homebrew/lib/php/pecl/20160303`
+
 
 - Create an mcrypt.ini file in the conf.d directory. Write…
 
 ```
 ;mcrypt
 
-extension="/opt/homebrew/lib/php/pecl/20180730/mcrypt.so"
+extension="/opt/homebrew/lib/php/pecl/20160303/mcrypt.so"
 ```
+
+- Restart the web server
+
+`brew services restart httpd`
+
+### For other php versions (7.2+) do the steps as for Intel processor but with path: /opt/homebrew 
