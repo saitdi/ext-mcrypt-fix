@@ -61,7 +61,7 @@ If you need ext-mcrypt for php7.1 you need to install it with MacPorts.
 
 - Check path with pecl versions:
 
-`cd /usr/local/lib/php/pecl/`
+`cd /opt/homebrew/lib/php/pecl/`
 
 - Open php.ini file and find the entry:
 
